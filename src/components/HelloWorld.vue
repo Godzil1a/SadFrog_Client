@@ -1,86 +1,40 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <el-button type="info" @click="myFunc">三点了！</el-button>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <el-container>
+      <el-header>
+        <el-row>
+          <el-col :span="6">
+            <img align="left" height="56" width="60" src="../assets/Sad_Frog.png">
+          </el-col>
+          <el-col :span="18">
+            <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal">
+              <el-menu-item index="1">首页</el-menu-item>
+              <el-submenu index="2">
+                <template slot="title">图书</template>
+                <el-menu-item index="2-1">选项1</el-menu-item>
+                <el-menu-item index="2-2">选项2</el-menu-item>
+                <el-menu-item index="2-3">选项3</el-menu-item>
+                <el-submenu index="2-4">
+                  <template slot="title">选项4</template>
+                  <el-menu-item index="2-4-1">选项1</el-menu-item>
+                  <el-menu-item index="2-4-2">选项2</el-menu-item>
+                  <el-menu-item index="2-4-3">选项3</el-menu-item>
+                </el-submenu>
+              </el-submenu>
+              <el-menu-item index="3" disabled>音乐</el-menu-item>
+              <el-menu-item index="4">
+                个人管理
+              </el-menu-item>
+            </el-menu>
+          </el-col>
+        </el-row>
+      </el-header>
+      <el-main>
+        <h1>
+          哈哈哈哈哈 你瞅啥 屁都没有
+        </h1>
+      </el-main>
+    </el-container>
   </div>
 </template>
 
@@ -89,13 +43,11 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to the future!'
+
     }
   },
   methods: {
-    myFunc () {
-      this.$message('饮茶先啊！')
-    }
+
   }
 }
 </script>
@@ -115,5 +67,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.el-menu-demo{
+  border: none;
 }
 </style>

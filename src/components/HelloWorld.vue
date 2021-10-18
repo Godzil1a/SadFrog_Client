@@ -21,9 +21,12 @@
                   <el-menu-item index="2-4-3">选项3</el-menu-item>
                 </el-submenu>
               </el-submenu>
-              <el-menu-item index="3" disabled>音乐</el-menu-item>
+              <el-menu-item index="3">音乐</el-menu-item>
               <el-menu-item index="4">
                 个人管理
+              </el-menu-item>
+              <el-menu-item index="5" @click="loginVisible = true">
+                登录
               </el-menu-item>
             </el-menu>
           </el-col>
@@ -31,10 +34,36 @@
       </el-header>
       <el-main>
         <h1>
-          哈哈哈哈哈 你瞅啥 屁都没有
+          陈静大吃屁
         </h1>
       </el-main>
     </el-container>
+    <el-dialog
+      title="登录"
+      :visible.sync="loginVisible"
+      width="30%">
+      <el-row :gutter="20">
+        <el-col :span="6">
+          <div>用户名</div>
+        </el-col>
+        <el-col :span="18">
+          <el-input v-model="userName" placeholder="请输入用户名"></el-input>
+        </el-col>
+      </el-row>
+      <br>
+      <el-row :gutter="20">
+        <el-col :span="6">
+          密码
+        </el-col>
+        <el-col :span="18">
+          <el-input v-model="userPwd" placeholder="请输入密码" show-password></el-input>
+        </el-col>
+      </el-row>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="loginVisible = false">取消</el-button>
+        <el-button type="primary" @click="login">登录</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -43,11 +72,41 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-
+      loginVisible: false,
+      userName: '',
+      userPwd: ''
     }
   },
   methods: {
-
+    login () {
+      this.$axios({
+        method: 'post',
+        url: 'login',
+        data: {
+          userName: this.userName,
+          userPwd: this.userPwd
+        }
+      }).then(successResponse => {
+        if (successResponse.data.code === 200) {
+          this.$notify({
+            title: '成功',
+            message: '登录成功！',
+            type: 'success'
+          })
+          this.loginVisible = false
+        } else {
+          this.$notify.error({
+            title: '错误',
+            message: '登陆失败！'
+          })
+        }
+      }).catch(failResponse => {
+        this.$notify.error({
+          title: '错误',
+          message: '登陆失败！'
+        })
+      })
+    }
   }
 }
 </script>

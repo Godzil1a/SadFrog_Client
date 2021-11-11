@@ -25,8 +25,9 @@
               <el-menu-item index="4">
                 个人管理
               </el-menu-item>
-              <el-menu-item index="5">
-                <router-link to="/login">登录</router-link>
+              <el-menu-item index="5" @click="goToLogin">
+                登录
+<!--                <router-link to="/login">登录</router-link>-->
               </el-menu-item>
             </el-menu>
           </el-col>
@@ -52,6 +53,9 @@ export default {
     }
   },
   methods: {
+    goToLogin () {
+      this.$router.push('/login')
+    }
   }
 }
 </script>
